@@ -1,0 +1,28 @@
+﻿@page
+@model CookBook.Pages.IndexModel
+@using Microsoft.EntityFrameworkCore;
+@using CookBook.Controllers
+@using Newtonsoft.Json;
+@{
+    ViewData["Title"] = "Каталог";
+}
+<div class="row">
+    <div class="col col-lg-3">
+        <select class="custom-select" required onchange="SelectCategory(this.options[this.selectedIndex].value)">
+            <option value="-1">Все сразу</option>
+            @foreach (var category in Model.Connection.Categories) {
+                <option value="@category.Id">@category.CategoryName</option>
+            }
+        </select>
+        <select class="custom-select" id="recipt" required onchange="SelectRecipt(this.options[this.selectedIndex].value)">
+        </select>
+    </div>
+
+    <div class="col-lg-9">
+        <div class="card" id="card">
+
+        </div>
+    </div>
+</div>
+<script id="data">
+</script>

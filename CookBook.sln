@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook", "CookBook\CookBook.csproj", "{AA634631-C038-41E0-B8DE-330C040FF490}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Context", "Context\Context.csproj", "{8A2E5BE3-9E69-45F4-BB9A-DA843ACD4B8F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA634631-C038-41E0-B8DE-330C040FF490}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA634631-C038-41E0-B8DE-330C040FF490}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA634631-C038-41E0-B8DE-330C040FF490}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA634631-C038-41E0-B8DE-330C040FF490}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A2E5BE3-9E69-45F4-BB9A-DA843ACD4B8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A2E5BE3-9E69-45F4-BB9A-DA843ACD4B8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A2E5BE3-9E69-45F4-BB9A-DA843ACD4B8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A2E5BE3-9E69-45F4-BB9A-DA843ACD4B8F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {417EF50F-9231-48F5-B867-FC3B7CA1D583}
+	EndGlobalSection
+EndGlobal

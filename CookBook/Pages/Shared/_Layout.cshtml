@@ -1,0 +1,37 @@
+﻿@using System.Security.Claims;
+@{
+    var user = User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Книга Рецептов</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link @(ViewData["Title"] == "Каталог" ? "active" : null)" href="/">Каталог</a>
+                <a class="nav-item nav-link @(ViewData["Title"] == "О нас" ? "active" : null)" href="/AboutUs">О нас</a>
+                @if (user == null) {
+                    <a class="nav-item nav-link @(ViewData["Title"] == "Авторизация" ? "active" : null)" href="/Login">Вход</a>
+                }
+                else {
+                    <form asp-action="Logout" asp-controller="Login">
+                        <input type="submit" class="nav-item nav-link" value="Выход" />
+                    </form>
+                }
+            </div>
+        </div>
+    </nav>
+    @RenderBody()
+    <script src="/js/My.js"></script>
+</body>
+</html>
