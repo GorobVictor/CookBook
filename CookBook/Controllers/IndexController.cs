@@ -20,14 +20,16 @@ namespace CookBook.Controllers {
                     .Include(x => x.Ingredients)
                         .ThenInclude(ingredient => ingredient.Products)
                         .ThenInclude(unit => unit.Units)
-                    .Include(x => x.Ingredients)
+                    .Include(x => x.Reviews)
+                        .ThenInclude(x => x.User)
                     .ToList());
             else {
                 var results = Connection.Recipts.Where(x => x.RecCategoryId == id)
                     .Include(x => x.Ingredients)
                         .ThenInclude(ingredient => ingredient.Products)
                         .ThenInclude(unit => unit.Units)
-                    .Include(x => x.Ingredients)
+                    .Include(x => x.Reviews)
+                        .ThenInclude(x => x.User)
                     .ToList();
                 if (results.Count == 0)
                     return NotFound(results);

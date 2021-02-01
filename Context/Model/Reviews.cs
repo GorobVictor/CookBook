@@ -3,10 +3,11 @@
 namespace Context.Model {
     public class Reviews {
         public int Id { get; set; }
-        public int RevUserId { get; set; }
-        public int RevRecipeId { get; set; }
-        public int RevRating { get; set; }
+        public int UserId { get; set; }
+        public virtual User User { get; set; }
+        public int ReciptsId { get; set; }
+        public Int16 RevRating { get; set; }
         public string RevMessage { get; set; }
-        public virtual DateTime RevDate { get; set; }
+        public DateTime RevDate { get; set; }
     }
 }

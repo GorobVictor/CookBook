@@ -21,9 +21,12 @@ function SelectRecipt(id) {
     var ingridients = "";
     for (var i = 0; i < recipt.ingredients.length; i++)
         ingridients += `${recipt.ingredients[i].products.prodName} ${recipt.ingredients[i].quantity} ${recipt.ingredients[i].products.units.unitName}<br>`;
-    if (json.length > 0)
+    var comments = "";
+    for (var i = 0; i < recipt.reviews.length; i++)
+        comments += `${recipt.reviews[i].user.usName} ${recipt.reviews[i].user.usSurname} ${recipt.reviews[i].revMessage} ${recipt.reviews[i].revDate} ${recipt.reviews[i].revRating} <br>`;
+    if (json.length > 0) {
         element.innerHTML =
-            `<div class="card-header" id="title">
+            `<div class="card-header" id="title" name="${recipt.id}">
 ${recipt.recName}
         </div>
         <div class="card-body">
@@ -33,7 +36,12 @@ ${recipt.recName}
         </div>
 <div class="card-footer text-muted">
     ${ingridients}
+  </div>
+<div class="card-footer text-muted">
+    ${comments}
   </div>`;
+        document.getElementById('reciptsId').value = recipt.id;
+    }
     else element.innerHTML = '';
 }
 SelectCategory(-1);

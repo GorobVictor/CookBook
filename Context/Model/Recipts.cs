@@ -8,5 +8,6 @@ namespace Context.Model {
         public int Caloric { get; set; }
         public string RecName { get; set; }
         public List<Ingredients> Ingredients { get; set; }
+        public List<Reviews> Reviews { get; set; }
     }
 }

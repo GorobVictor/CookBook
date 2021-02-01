@@ -1,28 +1,61 @@
 ﻿@page
 @model CookBook.Pages.IndexModel
 @using Microsoft.EntityFrameworkCore;
-@using CookBook.Controllers
+@using CookBook.Controllers;
 @using Newtonsoft.Json;
+@using System.Security.Claims;
 @{
     ViewData["Title"] = "Каталог";
 }
-<div class="row">
-    <div class="col col-lg-3">
-        <select class="custom-select" required onchange="SelectCategory(this.options[this.selectedIndex].value)">
-            <option value="-1">Все сразу</option>
-            @foreach (var category in Model.Connection.Categories) {
-                <option value="@category.Id">@category.CategoryName</option>
-            }
-        </select>
-        <select class="custom-select" id="recipt" required onchange="SelectRecipt(this.options[this.selectedIndex].value)">
-        </select>
-    </div>
-
+<div class="row container">
     <div class="col-lg-9">
         <div class="card" id="card">
 
         </div>
     </div>
+    <div class="col col-lg-3">
+        <div class="form-group">
+            <select class="custom-select" required onchange="SelectCategory(this.options[this.selectedIndex].value)">
+                <option value="-1">Все сразу</option>
+                @foreach (var category in Model.Connection.Categories) {
+                    <option value="@category.Id">@category.CategoryName</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <select class="custom-select" id="recipt" required onchange="SelectRecipt(this.options[this.selectedIndex].value)">
+            </select>
+        </div>
+        @if (User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value != null) {
+            <div class="card">
+                <div class="card-header">
+                    Оставить коментарий
+                </div>
+                <form method="POST">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <input type="number" class="form-control" name="reciptsId" id="reciptsId" placeholder="Коментарий" value="4" />
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" name="comments" placeholder="Коментарий"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" min="1" max="5" class="form-control" name="rating" placeholder="рейтинг" />
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <input type="submit" class="btn btn-primary" asp-page-handler="SendComment" value="Отправить коментарий" />
+                    </div>
+                </form>
+            </div>
+        }
+    </div>
 </div>
 <script id="data">
 </script>
+<style>
+    .container {
+        max-width: 1500px;
+        margin: auto;
+    }
+</style>
